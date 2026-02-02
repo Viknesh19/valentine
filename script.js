@@ -154,8 +154,11 @@ function startConfetti() {
 
 function moveNo() {
   const btn = document.getElementById("noBtn");
-  const x = Math.random() * (window.innerWidth - btn.offsetWidth);
-  const y = Math.random() * (window.innerHeight - btn.offsetHeight);
+  const padding = 16;
+  const maxX = window.innerWidth - btn.offsetWidth - padding;
+  const maxY = window.innerHeight - btn.offsetHeight - padding;
+  const x = padding + Math.random() * Math.max(0, maxX - padding);
+  const y = padding + Math.random() * Math.max(0, maxY - padding);
   btn.style.position = "absolute";
   btn.style.left = `${x}px`;
   btn.style.top = `${y}px`;
