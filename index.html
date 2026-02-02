@@ -1,0 +1,54 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link rel="stylesheet" href="style.css">
+    
+    <title>For You 💖</title>
+</head>
+<body>
+    <div id="app">
+        <audio id="bgMusic" loop>
+            <source src="assets/music.mp3" type="audio/mpeg">
+        </audio>
+
+        <!-- Question Screen -->
+        <div class="screen active" id="questions">
+            <h1>Before we begin…</h1>
+            <p>Do you remember how it all started?</p>
+            <button onclick="startExperience()">Yes 💕</button>
+        </div>
+
+        <!-- Memories -->
+        <div class="screen" id="memories">
+            <h1>Us 🥺</h1>
+            <div class="gallery">
+            <img src="assets/photos/1.jpg" />
+            <img src="assets/photos/2.jpg" />
+            <img src="assets/photos/3.jpg" />
+            </div>
+
+            <video controls>
+            <source src="assets/video/love.mp4" type="video/mp4" />
+            </video>
+
+            <button onclick="nextScreen()">Continue 💖</button>
+        </div>
+
+        <!-- Valentine Question -->
+        <div class="screen" id="final">
+            <h1>Will you be my Valentine? 💘</h1>
+            <div class="buttons">
+            <button onclick="yesClicked()">Yes ❤️</button>
+            <button id="noBtn" onmouseover="moveNo()" onclick="noClicked()">No 💔</button>
+        </div>
+    </div>
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>
