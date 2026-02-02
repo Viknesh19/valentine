@@ -37,6 +37,16 @@
                     <p><strong>How to answer:</strong> choose one option per question, and add a few longer memories in the paragraphs.</p>
                     <p><strong>Why these options?</strong> each one is a small, sweet moment that helps you relive a shared story.</p>
                 </div>
+                <div class="love-meter" aria-live="polite">
+                    <div class="love-meter__header">
+                        <span>Love meter</span>
+                        <span id="loveMeterText">0% us</span>
+                    </div>
+                    <div class="love-meter__bar">
+                        <span id="loveMeterFill"></span>
+                    </div>
+                    <div class="love-meter__sparkle" id="loveMeterSparkle" aria-hidden="true">✨ 100% us. ✨</div>
+                </div>
                 <form class="qa-form" id="qaForm">
                     <fieldset class="qa-block">
                         <legend>Our first date was…</legend>
@@ -109,7 +119,7 @@
             <p class="yes-prompt" id="yesPrompt">Ready for a forever kind of yes?</p>
             <div class="buttons">
             <button class="yes-button" id="yesBtn" onclick="handleYesClick()">Yes ❤️</button>
-            <button id="noBtn" onmouseover="moveNo()" onclick="noClicked()">No 💔</button>
+            <button id="noBtn" onclick="noClicked()">No 💔</button>
             </div>
         </div>
     </div>
