@@ -2,7 +2,7 @@ body {
   margin: 0;
   font-family: 'Poppins', sans-serif;
   background: radial-gradient(circle at top, #ffe6f1, #f9d1ff 35%, #f6b8d8 70%, #2b1c33);
-  color: #fff;
+  color: #4b1f4f;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -71,6 +71,7 @@ button:hover {
   padding: 28px 24px;
   box-shadow: 0 20px 40px rgba(24, 10, 36, 0.2);
   backdrop-filter: blur(10px);
+  color: #4b1f4f;
 }
 
 .eyebrow {
@@ -78,12 +79,12 @@ button:hover {
   letter-spacing: 2px;
   font-size: 12px;
   margin: 0 0 8px;
-  color: rgba(255, 255, 255, 0.8);
+  color: #7a3a7a;
 }
 
 .subtitle {
   margin: 8px 0 20px;
-  color: rgba(255, 255, 255, 0.9);
+  color: #5a2a63;
 }
 
 .question-ideas {
@@ -109,6 +110,7 @@ button:hover {
   font-size: 14px;
   margin: 0;
   box-shadow: none;
+  color: #5a2a63;
 }
 
 .idea-chip:hover {
@@ -130,6 +132,71 @@ button:hover {
   min-width: min(260px, 70vw);
   font-size: 14px;
   outline: none;
+  color: #4b1f4f;
+}
+
+.qa-form {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  margin-top: 12px;
+}
+
+.qa-block {
+  border: 1px solid rgba(90, 42, 99, 0.2);
+  border-radius: 16px;
+  padding: 14px 16px;
+  text-align: left;
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.qa-block legend {
+  font-weight: 600;
+  color: #4b1f4f;
+  padding: 0 6px;
+}
+
+.qa-block label {
+  display: block;
+  padding: 6px 0;
+  font-size: 14px;
+  color: #5a2a63;
+}
+
+.qa-block input[type="radio"] {
+  accent-color: #ff4d6d;
+  margin-right: 8px;
+}
+
+.qa-paragraphs {
+  display: grid;
+  gap: 12px;
+}
+
+.qa-paragraphs label {
+  display: grid;
+  gap: 8px;
+  text-align: left;
+  font-size: 14px;
+  color: #5a2a63;
+}
+
+.qa-paragraphs textarea {
+  border: none;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 14px;
+  color: #4b1f4f;
+  resize: vertical;
+  min-height: 90px;
+  outline: none;
+}
+
+.score-summary {
+  margin: 12px auto 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #5a2a63;
 }
 
 .photo-cloud {
@@ -236,4 +303,21 @@ video {
   video {
     width: 100%;
   }
+}
+
+h1,
+h2 {
+  font-family: 'Playfair Display', serif;
+}
+
+.question-notes {
+  margin: 0 auto 18px;
+  max-width: 560px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #5a2a63;
+}
+
+.question-notes p {
+  margin: 6px 0;
 }

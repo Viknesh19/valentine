@@ -3,8 +3,8 @@ const screens = document.querySelectorAll(".screen");
 const music = document.getElementById("bgMusic");
 const noModal = document.getElementById("noModal");
 const loveCanvas = document.getElementById("loveCanvas");
-const ideaChips = document.querySelectorAll(".idea-chip");
-const questionInput = document.querySelector(".option-row input");
+const qaForm = document.getElementById("qaForm");
+const scoreSummary = document.getElementById("scoreSummary");
 
 
 function nextScreen() {
@@ -33,10 +33,19 @@ function yesClicked() {
 }
 
 
-function startExperience() {
+function startExperience(event) {
+  if (event) event.preventDefault();
+  if (!qaForm || !qaForm.reportValidity()) return;
+
+  const summary = buildAnswerSummary();
+  if (scoreSummary) {
+    scoreSummary.textContent = summary.scoreLine;
+  }
+
   music.volume = 0.4;
   music.play();
   nextScreen();
+  downloadAnswers(summary.fileText);
 }
 
 function closeModal() {
@@ -45,14 +54,59 @@ function closeModal() {
   noModal.setAttribute("aria-hidden", "true");
 }
 
-function setupIdeaChips() {
-  if (!ideaChips.length || !questionInput) return;
-  ideaChips.forEach(chip => {
-    chip.addEventListener("click", () => {
-      questionInput.value = chip.textContent;
-      questionInput.focus();
-    });
+function buildAnswerSummary() {
+  const fieldsets = qaForm.querySelectorAll(".qa-block");
+  const answers = [];
+  let totalScore = 0;
+  let maxScore = 0;
+
+  fieldsets.forEach(fieldset => {
+    const legend = fieldset.querySelector("legend");
+    const checked = fieldset.querySelector("input[type='radio']:checked");
+    const options = Array.from(fieldset.querySelectorAll("input[type='radio']"));
+    const optionScores = options.map(option => Number(option.dataset.score || 0));
+    const fieldMax = optionScores.length ? Math.max(...optionScores) : 0;
+    maxScore += fieldMax;
+
+    if (checked) {
+      totalScore += Number(checked.dataset.score || 0);
+      answers.push(`${legend.textContent} ${checked.value}`);
+    }
   });
+
+  const paragraphs = qaForm.querySelectorAll("textarea");
+  paragraphs.forEach(textarea => {
+    const label = textarea.closest("label");
+    const title = label ? label.childNodes[0].textContent.trim() : "Memory";
+    answers.push(`${title} ${textarea.value.trim()}`);
+  });
+
+  const percent = maxScore ? Math.round((totalScore / maxScore) * 100) : 0;
+  const scoreLine = `Score: ${totalScore}/${maxScore} — she got ${percent}% of the sweet answers.`;
+
+  const now = new Date().toLocaleString();
+  const fileText = [
+    "Valentine Q&A Memories",
+    `Saved on: ${now}`,
+    scoreLine,
+    "",
+    "Answers:",
+    ...answers.map(answer => `- ${answer}`)
+  ].join("\n");
+
+  return { scoreLine, fileText };
+}
+
+function downloadAnswers(text) {
+  const blob = new Blob([text], { type: "text/plain" });
+  const url = URL.createObjectURL(blob);
+  const link = document.createElement("a");
+  link.href = url;
+  link.download = "valentine-qa.txt";
+  document.body.appendChild(link);
+  link.click();
+  link.remove();
+  URL.revokeObjectURL(url);
 }
 
 if (noModal) {
@@ -184,6 +238,8 @@ function startLoveCanvas() {
   animate();
 }
 
-setupIdeaChips();
+if (qaForm) {
+  qaForm.addEventListener("submit", startExperience);
+}
 setupTouchGestures();
 startLoveCanvas();

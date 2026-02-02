@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
     
     <title>For You 💖</title>
 </head>
@@ -29,25 +32,62 @@
             <div class="card">
                 <p class="eyebrow">Before we begin…</p>
                 <h1>Do you remember how it all started?</h1>
-                <p class="subtitle">Pick a question or add your own sweet options.</p>
-                <div class="question-ideas">
-                    <button class="idea-chip">Our first date?</button>
-                    <button class="idea-chip">First song we loved?</button>
-                    <button class="idea-chip">The cutest memory?</button>
-                    <button class="idea-chip">Our inside joke?</button>
-                    <button class="idea-chip">Favorite snack together?</button>
-                    <button class="idea-chip">First time we laughed hard?</button>
+                <p class="subtitle">Answer the sweet Q&A, then keep your memories safe.</p>
+                <div class="question-notes">
+                    <p><strong>How to answer:</strong> choose one option per question, and add a few longer memories in the paragraphs.</p>
+                    <p><strong>Why these options?</strong> each one is a small, sweet moment that helps you relive a shared story.</p>
                 </div>
-                <div class="option-row">
-                    <input type="text" placeholder="Add your own question..." aria-label="Add your own question" />
-                    <button class="soft-button" onclick="startExperience()">Start 💕</button>
-                </div>
+                <form class="qa-form" id="qaForm">
+                    <fieldset class="qa-block">
+                        <legend>Our first date was…</legend>
+                        <label><input type="radio" name="firstDate" value="Movie night" data-score="3" required> Movie night</label>
+                        <label><input type="radio" name="firstDate" value="Cute café" data-score="4"> Cute café</label>
+                        <label><input type="radio" name="firstDate" value="Walk + ice cream" data-score="5"> Walk + ice cream</label>
+                    </fieldset>
+
+                    <fieldset class="qa-block">
+                        <legend>The song that reminds me of you is…</legend>
+                        <label><input type="radio" name="song" value="Our playlist favorite" data-score="5" required> Our playlist favorite</label>
+                        <label><input type="radio" name="song" value="That one catchy tune" data-score="4"> That one catchy tune</label>
+                        <label><input type="radio" name="song" value="A surprise serenade" data-score="3"> A surprise serenade</label>
+                    </fieldset>
+
+                    <fieldset class="qa-block">
+                        <legend>Our inside joke started with…</legend>
+                        <label><input type="radio" name="insideJoke" value="A silly mispronunciation" data-score="5" required> A silly mispronunciation</label>
+                        <label><input type="radio" name="insideJoke" value="That meme we kept sending" data-score="4"> That meme we kept sending</label>
+                        <label><input type="radio" name="insideJoke" value="An unexpected moment" data-score="3"> An unexpected moment</label>
+                    </fieldset>
+
+                    <fieldset class="qa-block">
+                        <legend>Favorite snack together?</legend>
+                        <label><input type="radio" name="snack" value="Popcorn and cuddles" data-score="4" required> Popcorn and cuddles</label>
+                        <label><input type="radio" name="snack" value="Fries to share" data-score="5"> Fries to share</label>
+                        <label><input type="radio" name="snack" value="A cozy dessert" data-score="3"> A cozy dessert</label>
+                    </fieldset>
+
+                    <div class="qa-paragraphs">
+                        <label>
+                            The cutest memory I still replay is…
+                            <textarea name="cutestMemory" rows="3" placeholder="Write a few lines..." required></textarea>
+                        </label>
+                        <label>
+                            A moment that made me think “this is us” is…
+                            <textarea name="usMoment" rows="3" placeholder="Write a few lines..." required></textarea>
+                        </label>
+                    </div>
+
+                    <div class="option-row">
+                        <button class="soft-button" type="submit">Start 💕</button>
+                    </div>
+                </form>
             </div>
         </div>
 
         <!-- Memories -->
         <div class="screen" id="memories">
             <h1>Us 🥺</h1>
+            <p class="score-summary" id="scoreSummary" aria-live="polite"></p>
             <div class="gallery">
             <img src="assets/photos/1.jpg" />
             <img src="assets/photos/2.jpg" />
