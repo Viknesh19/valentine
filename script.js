@@ -183,11 +183,15 @@ function startConfetti() {
 function moveNo() {
   const btn = document.getElementById("noBtn");
   const padding = 16;
-  const maxX = window.innerWidth - btn.offsetWidth - padding;
-  const maxY = window.innerHeight - btn.offsetHeight - padding;
-  const x = padding + Math.random() * Math.max(0, maxX - padding);
-  const y = padding + Math.random() * Math.max(0, maxY - padding);
-  btn.style.position = "absolute";
+
+  const vw = window.visualViewport?.width || window.innerWidth;
+  const vh = window.visualViewport?.height || window.innerHeight;
+
+  const maxX = vw - btn.offsetWidth - padding;
+  const maxY = vh - btn.offsetHeight - padding;
+  const x = padding + Math.random() * maxX;
+  const y = padding + Math.random() * maxY;
+  btn.style.position = "fixed";
   btn.style.left = `${x}px`;
   btn.style.top = `${y}px`;
 }
