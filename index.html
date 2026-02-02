@@ -11,15 +11,38 @@
 </head>
 <body>
     <div id="app">
+        <canvas id="loveCanvas" aria-hidden="true"></canvas>
         <audio id="bgMusic" loop>
             <source src="assets/music.mp3" type="audio/mpeg">
         </audio>
 
+        <div class="photo-cloud" aria-hidden="true">
+            <img src="assets/photos/1.jpg" class="floating-photo photo-one" alt="" />
+            <img src="assets/photos/2.jpg" class="floating-photo photo-two" alt="" />
+            <img src="assets/photos/3.jpg" class="floating-photo photo-three" alt="" />
+            <img src="assets/photos/1.jpg" class="floating-photo photo-four" alt="" />
+            <img src="assets/photos/2.jpg" class="floating-photo photo-five" alt="" />
+        </div>
+
         <!-- Question Screen -->
         <div class="screen active" id="questions">
-            <h1>Before we begin…</h1>
-            <p>Do you remember how it all started?</p>
-            <button onclick="startExperience()">Yes 💕</button>
+            <div class="card">
+                <p class="eyebrow">Before we begin…</p>
+                <h1>Do you remember how it all started?</h1>
+                <p class="subtitle">Pick a question or add your own sweet options.</p>
+                <div class="question-ideas">
+                    <button class="idea-chip">Our first date?</button>
+                    <button class="idea-chip">First song we loved?</button>
+                    <button class="idea-chip">The cutest memory?</button>
+                    <button class="idea-chip">Our inside joke?</button>
+                    <button class="idea-chip">Favorite snack together?</button>
+                    <button class="idea-chip">First time we laughed hard?</button>
+                </div>
+                <div class="option-row">
+                    <input type="text" placeholder="Add your own question..." aria-label="Add your own question" />
+                    <button class="soft-button" onclick="startExperience()">Start 💕</button>
+                </div>
+            </div>
         </div>
 
         <!-- Memories -->
@@ -44,9 +67,18 @@
             <div class="buttons">
             <button onclick="yesClicked()">Yes ❤️</button>
             <button id="noBtn" onmouseover="moveNo()" onclick="noClicked()">No 💔</button>
+            </div>
         </div>
     </div>
+</div>
 
+<div class="modal" id="noModal" aria-hidden="true" role="dialog" aria-modal="true">
+    <div class="modal-card">
+        <p class="modal-emoji">🥺</p>
+        <h2>Nope detected!</h2>
+        <p>Your heart already picked “Yes.” Let’s try again with love.</p>
+        <button class="soft-button" onclick="closeModal()">Okay 💞</button>
+    </div>
 </div>
 
 <script src="script.js"></script>
