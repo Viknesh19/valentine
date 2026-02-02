@@ -1,8 +1,63 @@
+:root{
+    
+    /* Colors */
+    /*Color mode HSL(hue, saturation, lightness)*/
+   
+    --hue: 332;
+    --first-color: hsl(var(--hue) 88% 63%);
+    --first-color-alt: hsl(var(--hue) 80% 55%);
+    --title-color: hsl(320 38% 22%);
+    --text-color: hsl(318 34% 28%);
+    --body-color: hsl(325 100% 96%);
+    --container-color: rgba(255, 255, 255, 0.18);
+    --body-gradient: radial-gradient(circle at top, #ffe6f1, #f9d1ff 35%, #f6b8d8 70%, #2b1c33);
+      
+    /* Font and typography */
+
+    --body-font: 'Poppins', sans-serif;
+    --title-font: 'Playfair Display', serif;
+    --biggest-font-size: 2.4rem;
+    --bigger-font-size: 1.8rem;
+    --h1-font-size: 1.7rem;
+    --h2-font-size: 1.4rem;
+    --h3-font-size: 1.15rem;
+    --normal-font-size: 1rem;
+    --small-font-size: .9rem;
+    --smaller-font-size: .8rem;
+
+    /* Font weight */
+    --font-regular: 400;
+    --font-medium: 500;
+    --font-semi-bold: 600;
+
+    /* z index */
+    --z-tooltip: 10;
+    --z-fixed: 100;
+}
+
+/* Responsive typography */
+@media screen and (min-width: 1152px) {
+    :root {
+        --biggest-font-size: 3rem;
+        --bigger-font-size: 2.2rem;
+        --h1-font-size: 2rem;
+        --h2-font-size: 1.6rem;
+        --h3-font-size: 1.3rem;
+        --normal-font-size: 1.05rem;
+        --small-font-size: .95rem;
+        --smaller-font-size: .85rem;
+    }
+}
+
+* {
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
-  font-family: 'Poppins', sans-serif;
-  background: radial-gradient(circle at top, #ffe6f1, #f9d1ff 35%, #f6b8d8 70%, #2b1c33);
-  color: #4b1f4f;
+  font-family: var(--body-font);
+  background: var(--body-gradient);
+  color: var(--text-color);
   display: flex;
   justify-content: center;
   align-items: center;
@@ -13,7 +68,7 @@ body {
 #app {
   position: relative;
   width: min(900px, 92vw);
-  min-height: 80vh;
+  height: 100vh;
   padding: 32px 24px;
   display: flex;
   justify-content: center;
@@ -35,6 +90,7 @@ body {
   text-align: center;
   animation: fade 1s ease;
   z-index: 2;
+  width: 100%;
 }
 
 .screen.active {
@@ -42,11 +98,11 @@ body {
 }
 
 button {
-  background: #ff4d6d;
+  background: var(--first-color);
   border: none;
   padding: 12px 24px;
   color: white;
-  font-size: 16px;
+  font-size: var(--normal-font-size);
   border-radius: 25px;
   cursor: pointer;
   margin: 10px;
@@ -61,30 +117,32 @@ button:hover {
 
 .soft-button {
   background: #fff1f7;
-  color: #ff4d6d;
-  font-weight: 600;
+  color: var(--first-color);
+  font-weight: var(--font-semi-bold);
 }
 
 .card {
-  background: rgba(255, 255, 255, 0.18);
+  background: var(--container-color);
   border-radius: 24px;
   padding: 28px 24px;
   box-shadow: 0 20px 40px rgba(24, 10, 36, 0.2);
   backdrop-filter: blur(10px);
-  color: #4b1f4f;
+  color: var(--text-color);
+  max-height: min(78vh, 720px);
+  overflow-y: auto;
 }
 
 .eyebrow {
   text-transform: uppercase;
   letter-spacing: 2px;
-  font-size: 12px;
+  font-size: var(--smaller-font-size);
   margin: 0 0 8px;
-  color: #7a3a7a;
+  color: hsl(312 34% 40%);
 }
 
 .subtitle {
   margin: 8px 0 20px;
-  color: #5a2a63;
+  color: hsl(312 35% 32%);
 }
 
 .question-ideas {
@@ -107,10 +165,10 @@ button:hover {
   border: 1px solid rgba(255, 255, 255, 0.4);
   padding: 8px 16px;
   border-radius: 999px;
-  font-size: 14px;
+  font-size: var(--small-font-size);
   margin: 0;
   box-shadow: none;
-  color: #5a2a63;
+  color: hsl(312 35% 32%);
 }
 
 .idea-chip:hover {
@@ -130,9 +188,9 @@ button:hover {
   border-radius: 20px;
   border: none;
   min-width: min(260px, 70vw);
-  font-size: 14px;
+  font-size: var(--normal-font-size);
   outline: none;
-  color: #4b1f4f;
+  color: var(--text-color);
 }
 
 .qa-form {
@@ -151,20 +209,20 @@ button:hover {
 }
 
 .qa-block legend {
-  font-weight: 600;
-  color: #4b1f4f;
+  font-weight: var(--font-semi-bold);
+  color: var(--title-color);
   padding: 0 6px;
 }
 
 .qa-block label {
   display: block;
   padding: 6px 0;
-  font-size: 14px;
-  color: #5a2a63;
+  font-size: var(--small-font-size);
+  color: hsl(312 35% 32%);
 }
 
 .qa-block input[type="radio"] {
-  accent-color: #ff4d6d;
+  accent-color: var(--first-color);
   margin-right: 8px;
 }
 
@@ -177,16 +235,16 @@ button:hover {
   display: grid;
   gap: 8px;
   text-align: left;
-  font-size: 14px;
-  color: #5a2a63;
+  font-size: var(--small-font-size);
+  color: hsl(312 35% 32%);
 }
 
 .qa-paragraphs textarea {
   border: none;
   border-radius: 14px;
   padding: 12px 14px;
-  font-size: 14px;
-  color: #4b1f4f;
+  font-size: var(--small-font-size);
+  color: var(--text-color);
   resize: vertical;
   min-height: 90px;
   outline: none;
@@ -194,9 +252,9 @@ button:hover {
 
 .score-summary {
   margin: 12px auto 0;
-  font-size: 16px;
-  font-weight: 600;
-  color: #5a2a63;
+  font-size: var(--normal-font-size);
+  font-weight: var(--font-semi-bold);
+  color: hsl(312 35% 32%);
 }
 
 .photo-cloud {
@@ -256,7 +314,7 @@ video {
 
 .modal-card {
   background: #fff0f8;
-  color: #5e2b5c;
+  color: hsl(312 35% 32%);
   padding: 28px 24px;
   border-radius: 20px;
   text-align: center;
@@ -291,11 +349,18 @@ video {
   to { transform: scale(1.08); }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 900px) {
   #app {
+    height: 100vh;
     padding: 24px 16px;
   }
 
+  .card {
+    max-height: 82vh;
+  }
+}
+
+@media (max-width: 600px) {
   .floating-photo {
     width: clamp(60px, 20vw, 100px);
   }
@@ -303,21 +368,39 @@ video {
   video {
     width: 100%;
   }
+
+  .card {
+    max-height: 84vh;
+  }
 }
 
 h1,
 h2 {
-  font-family: 'Playfair Display', serif;
+  font-family: var(--title-font);
+  color: var(--title-color);
 }
 
 .question-notes {
   margin: 0 auto 18px;
   max-width: 560px;
-  font-size: 14px;
+  font-size: var(--small-font-size);
   line-height: 1.5;
-  color: #5a2a63;
+  color: hsl(312 35% 32%);
 }
 
 .question-notes p {
   margin: 6px 0;
+}
+
+.card::-webkit-scrollbar {
+  width: 8px;
+}
+
+.card::-webkit-scrollbar-thumb {
+  background: rgba(255, 77, 109, 0.4);
+  border-radius: 999px;
+}
+
+.card::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.25);
 }
