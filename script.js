@@ -5,6 +5,15 @@ const noModal = document.getElementById("noModal");
 const loveCanvas = document.getElementById("loveCanvas");
 const qaForm = document.getElementById("qaForm");
 const scoreSummary = document.getElementById("scoreSummary");
+const yesBtn = document.getElementById("yesBtn");
+const yesPrompt = document.getElementById("yesPrompt");
+let yesStage = 0;
+const yesStages = [
+  { label: "Yes ❤️", prompt: "Ready for a forever kind of yes?" },
+  { label: "Really yes? 💞", prompt: "Like, really yes?" },
+  { label: "Very sure yes? 💓", prompt: "Are you very sure?" },
+  { label: "100% yes! 💘", prompt: "Okay, lock it in!" }
+];
 
 
 function nextScreen() {
@@ -30,6 +39,25 @@ function yesClicked() {
     </div>
   `;
   startConfetti();
+}
+
+function handleYesClick() {
+  if (!yesBtn) return;
+
+  yesStage += 1;
+  if (yesStage >= yesStages.length) {
+    yesClicked();
+    return;
+  }
+
+  const nextStage = yesStages[yesStage];
+  yesBtn.textContent = nextStage.label;
+  if (yesPrompt) {
+    yesPrompt.textContent = nextStage.prompt;
+  }
+  const scale = 1 + yesStage * 0.18;
+  yesBtn.style.setProperty("--yes-scale", scale);
+  yesBtn.style.boxShadow = "0 18px 32px rgba(255, 77, 109, 0.45)";
 }
 
 

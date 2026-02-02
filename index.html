@@ -88,24 +88,27 @@
         <div class="screen" id="memories">
             <h1>Us 🥺</h1>
             <p class="score-summary" id="scoreSummary" aria-live="polite"></p>
-            <div class="gallery">
-            <img src="assets/photos/1.jpg" />
-            <img src="assets/photos/2.jpg" />
-            <img src="assets/photos/3.jpg" />
+            <div class="memories-stack">
+                <div class="gallery">
+                <img src="assets/photos/1.jpg" />
+                <img src="assets/photos/2.jpg" />
+                <img src="assets/photos/3.jpg" />
+                </div>
+
+                <video controls>
+                <source src="assets/video/love.mp4" type="video/mp4" />
+                </video>
+
+                <button class="continue-button" onclick="nextScreen()">Continue 💖</button>
             </div>
-
-            <video controls>
-            <source src="assets/video/love.mp4" type="video/mp4" />
-            </video>
-
-            <button onclick="nextScreen()">Continue 💖</button>
         </div>
 
         <!-- Valentine Question -->
         <div class="screen" id="final">
             <h1>Will you be my Valentine? 💘</h1>
+            <p class="yes-prompt" id="yesPrompt">Ready for a forever kind of yes?</p>
             <div class="buttons">
-            <button onclick="yesClicked()">Yes ❤️</button>
+            <button class="yes-button" id="yesBtn" onclick="handleYesClick()">Yes ❤️</button>
             <button id="noBtn" onmouseover="moveNo()" onclick="noClicked()">No 💔</button>
             </div>
         </div>
