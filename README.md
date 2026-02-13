@@ -4,7 +4,7 @@ A single-page Valentine experience with a sweet Q&A, a love meter, floating phot
 
 ## Features
 - Guided Q&A with score-based love meter.
-- Memory gallery with photos and video.
+- Memory gallery with photos, video, and an openable love letter.
 - Playful final prompt with yes/no interaction.
 - Background music and floating photo cloud.
 

@@ -105,6 +105,8 @@
                 <img src="assets/photos/3.jpg" />
                 </div>
 
+                <button class="soft-button letter-button" id="openLetterBtn" type="button">Open your letter 💌</button>
+
                 <video controls>
                 <source src="assets/video/love.mp4" type="video/mp4" />
                 </video>
@@ -131,6 +133,23 @@
         <h2>Nope detected!</h2>
         <p>Your heart already picked “Yes.” Let’s try again with love.</p>
         <button class="soft-button" onclick="closeModal()">Okay 💞</button>
+    </div>
+</div>
+
+<div class="letter-modal" id="letterModal" aria-hidden="true" role="dialog" aria-modal="true" aria-labelledby="letterTitle">
+    <div class="letter-card">
+        <button class="soft-button letter-close" id="closeLetterBtn" type="button">Close</button>
+        <p class="letter-date">My love,</p>
+        <h2 id="letterTitle">A little letter for you 💖</h2>
+        <p>
+            Every day with you feels like a soft song I never want to end. Thank you for the laughter,
+            the warm hugs, and all the tiny moments that became my favorite memories.
+        </p>
+        <p>
+            If you ever doubt how special you are, read this again: you are deeply loved, endlessly chosen,
+            and the best part of my world.
+        </p>
+        <p class="letter-signature">Forever yours ❤️</p>
     </div>
 </div>
 
