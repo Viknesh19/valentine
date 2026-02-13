@@ -14,6 +14,7 @@ const openLetterBtn = document.getElementById("openLetterBtn");
 const closeLetterBtn = document.getElementById("closeLetterBtn");
 const letterModal = document.getElementById("letterModal");
 const letterEnvelope = document.getElementById("letterEnvelope");
+const envelopeTrigger = document.getElementById("envelopeTrigger");
 let yesStage = 0;
 let noMoveEnabled = false;
 let replayCleanup = null;
@@ -41,9 +42,15 @@ function openLetter() {
   letterModal.setAttribute("aria-hidden", "false");
   if (letterEnvelope) {
     letterEnvelope.classList.remove("opening");
-    void letterEnvelope.offsetWidth;
-    letterEnvelope.classList.add("opening");
   }
+}
+
+function revealLetter() {
+  if (!letterEnvelope) return;
+  if (letterEnvelope.classList.contains("opening")) return;
+  letterEnvelope.classList.remove("opening");
+  void letterEnvelope.offsetWidth;
+  letterEnvelope.classList.add("opening");
 }
 
 function nextScreen() {
@@ -280,6 +287,10 @@ if (openLetterBtn) {
 
 if (closeLetterBtn) {
   closeLetterBtn.addEventListener("click", closeLetter);
+}
+
+if (envelopeTrigger) {
+  envelopeTrigger.addEventListener("click", revealLetter);
 }
 
 if (letterModal) {
