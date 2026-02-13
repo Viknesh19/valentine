@@ -534,7 +534,7 @@ video {
   justify-content: center;
   align-items: flex-end;
   padding: 28px 20px 30px;
-  min-height: min(560px, 78vh);
+  min-height: min(520px, 72vh);
 }
 
 .envelope-body,
@@ -548,18 +548,40 @@ video {
 
 .envelope-body {
   bottom: 50px;
-  height: clamp(220px, 42vh, 290px);
-  background: linear-gradient(145deg, #ff9ec0, #ff7fae 56%, #f75f98);
-  box-shadow: 0 22px 34px rgba(20, 10, 30, 0.28);
+  height: clamp(210px, 36vh, 250px);
+  border-radius: 0 0 10px 10px;
+  background: linear-gradient(180deg, #1679ad 0%, #1576aa 100%);
+  box-shadow: 0 18px 30px rgba(7, 40, 67, 0.35);
   z-index: 1;
 }
 
+.envelope-body::before,
+.envelope-body::after {
+  content: "";
+  position: absolute;
+  bottom: 0;
+  width: 50%;
+  height: 65%;
+  background: #1a84bd;
+  z-index: 2;
+}
+
+.envelope-body::before {
+  left: 0;
+  clip-path: polygon(0 100%, 100% 0, 100% 100%);
+}
+
+.envelope-body::after {
+  right: 0;
+  clip-path: polygon(0 0, 100% 100%, 0 100%);
+}
+
 .envelope-lid {
-  bottom: calc(50px + clamp(95px, 18vh, 120px));
-  height: clamp(170px, 30vh, 220px);
+  bottom: calc(50px + clamp(110px, 18vh, 130px));
+  height: clamp(130px, 24vh, 170px);
   transform-origin: center bottom;
   clip-path: polygon(50% 0, 100% 100%, 0 100%);
-  background: linear-gradient(180deg, #ffb3cf, #ff7fad);
+  background: linear-gradient(180deg, #06344f 0%, #05324a 100%);
   z-index: 3;
 }
 
@@ -582,10 +604,10 @@ video {
   position: absolute;
   bottom: 14px;
   margin: 0;
-  color: #ffe8f3;
+  color: #d7ecf9;
   font-weight: var(--font-medium);
   z-index: 4;
-  text-shadow: 0 4px 12px rgba(20, 10, 30, 0.35);
+  text-shadow: 0 4px 12px rgba(3, 21, 34, 0.42);
 }
 
 .letter-card {
