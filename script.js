@@ -13,6 +13,7 @@ const loveMeterSparkle = document.getElementById("loveMeterSparkle");
 const openLetterBtn = document.getElementById("openLetterBtn");
 const closeLetterBtn = document.getElementById("closeLetterBtn");
 const letterModal = document.getElementById("letterModal");
+const letterEnvelope = document.getElementById("letterEnvelope");
 let yesStage = 0;
 let noMoveEnabled = false;
 let replayCleanup = null;
@@ -29,12 +30,20 @@ function closeLetter() {
   if (!letterModal) return;
   letterModal.classList.remove("show");
   letterModal.setAttribute("aria-hidden", "true");
+  if (letterEnvelope) {
+    letterEnvelope.classList.remove("opening");
+  }
 }
 
 function openLetter() {
   if (!letterModal) return;
   letterModal.classList.add("show");
   letterModal.setAttribute("aria-hidden", "false");
+  if (letterEnvelope) {
+    letterEnvelope.classList.remove("opening");
+    void letterEnvelope.offsetWidth;
+    letterEnvelope.classList.add("opening");
+  }
 }
 
 function nextScreen() {
