@@ -152,7 +152,7 @@ button:hover {
   box-shadow: 0 20px 40px rgba(24, 10, 36, 0.2);
   backdrop-filter: blur(10px);
   color: var(--text-color);
-  max-height: min(78vh, 720px);
+  max-height: min(90vh, 840px);
   overflow-y: auto;
 }
 
@@ -597,7 +597,7 @@ video {
   box-shadow: 0 20px 38px rgba(20, 10, 30, 0.24);
   color: hsl(312 35% 26%);
   line-height: 1.7;
-  z-index: 2;
+  z-index: 3;
   transform: translateY(58%);
   opacity: 0;
 }
