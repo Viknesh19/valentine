@@ -533,7 +533,7 @@ video {
   display: flex;
   justify-content: center;
   align-items: flex-end;
-  padding: 28px 20px 30px;
+  padding: 24px 20px 30px;
   min-height: min(520px, 72vh);
 }
 
@@ -543,13 +543,12 @@ video {
   left: 50%;
   transform: translateX(-50%);
   width: min(560px, 92vw);
-  border-radius: 20px;
 }
 
 .envelope-body {
-  bottom: 50px;
+  bottom: 48px;
   height: clamp(210px, 36vh, 250px);
-  border-radius: 0 0 10px 10px;
+  border-radius: 0 0 12px 12px;
   background: linear-gradient(180deg, #1679ad 0%, #1576aa 100%);
   box-shadow: 0 18px 30px rgba(7, 40, 67, 0.35);
   z-index: 1;
@@ -561,7 +560,7 @@ video {
   position: absolute;
   bottom: 0;
   width: 50%;
-  height: 65%;
+  height: 62%;
   background: #1a84bd;
   z-index: 2;
 }
@@ -577,12 +576,13 @@ video {
 }
 
 .envelope-lid {
-  bottom: calc(50px + clamp(110px, 18vh, 130px));
+  bottom: calc(48px + clamp(210px, 36vh, 250px) - 2px);
   height: clamp(130px, 24vh, 170px);
   transform-origin: center bottom;
-  clip-path: polygon(50% 0, 100% 100%, 0 100%);
+  clip-path: polygon(0 100%, 50% 0, 100% 100%);
   background: linear-gradient(180deg, #06344f 0%, #05324a 100%);
-  z-index: 3;
+  z-index: 4;
+  backface-visibility: hidden;
 }
 
 .envelope-trigger {
@@ -620,12 +620,12 @@ video {
   color: hsl(312 35% 26%);
   line-height: 1.7;
   z-index: 3;
-  transform: translateY(58%);
+  transform: translateY(56%);
   opacity: 0;
 }
 
 .letter-envelope.opening .envelope-lid {
-  animation: openEnvelope 0.8s ease forwards;
+  animation: openEnvelope 0.72s cubic-bezier(0.22, 0.9, 0.34, 1) forwards;
 }
 
 .letter-envelope.opening .envelope-trigger,
@@ -634,7 +634,7 @@ video {
 }
 
 .letter-envelope.opening .letter-card {
-  animation: pullLetter 0.95s 0.2s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
+  animation: pullLetter 0.95s 0.16s cubic-bezier(0.2, 0.8, 0.2, 1) forwards;
 }
 
 .letter-close {
@@ -654,18 +654,23 @@ video {
 }
 
 @keyframes openEnvelope {
+  55% {
+    transform: translateX(-50%) rotateX(-96deg);
+    z-index: 0;
+  }
   to {
-    transform: translateX(-50%) rotateX(180deg);
+    transform: translateX(-50%) rotateX(-164deg);
+    z-index: 0;
   }
 }
 
 @keyframes pullLetter {
   0% {
-    transform: translateY(58%);
+    transform: translateY(56%);
     opacity: 0;
   }
   100% {
-    transform: translateY(-16%);
+    transform: translateY(-18%);
     opacity: 1;
   }
 }
