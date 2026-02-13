@@ -25,7 +25,10 @@ const yesStages = [
   { label: "100% yes! 💘", prompt: "Okay, lock it in!" }
 ];
 
-
+document.addEventListener("click", function () {
+    const music = document.getElementById("bgMusic");
+    music.play();
+}, { once: true });
 
 function closeLetter() {
   if (!letterModal) return;
