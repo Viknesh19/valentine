@@ -10,6 +10,9 @@ const yesPrompt = document.getElementById("yesPrompt");
 const loveMeterFill = document.getElementById("loveMeterFill");
 const loveMeterText = document.getElementById("loveMeterText");
 const loveMeterSparkle = document.getElementById("loveMeterSparkle");
+const openLetterBtn = document.getElementById("openLetterBtn");
+const closeLetterBtn = document.getElementById("closeLetterBtn");
+const letterModal = document.getElementById("letterModal");
 let yesStage = 0;
 let noMoveEnabled = false;
 let replayCleanup = null;
@@ -20,6 +23,19 @@ const yesStages = [
   { label: "100% yes! 💘", prompt: "Okay, lock it in!" }
 ];
 
+
+
+function closeLetter() {
+  if (!letterModal) return;
+  letterModal.classList.remove("show");
+  letterModal.setAttribute("aria-hidden", "true");
+}
+
+function openLetter() {
+  if (!letterModal) return;
+  letterModal.classList.add("show");
+  letterModal.setAttribute("aria-hidden", "false");
+}
 
 function nextScreen() {
   screens[current].classList.remove("active");
@@ -244,6 +260,23 @@ if (noModal) {
   noModal.addEventListener("click", event => {
     if (event.target === noModal) {
       closeModal();
+    }
+  });
+}
+
+
+if (openLetterBtn) {
+  openLetterBtn.addEventListener("click", openLetter);
+}
+
+if (closeLetterBtn) {
+  closeLetterBtn.addEventListener("click", closeLetter);
+}
+
+if (letterModal) {
+  letterModal.addEventListener("click", event => {
+    if (event.target === letterModal) {
+      closeLetter();
     }
   });
 }
